@@ -8,13 +8,11 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
     
-COPY crontab /etc/cron.d/mobex-crontab
+COPY crontab /etc/cron.d/crontab-work
 COPY index.js /usr/local/bin/index.js
-COPY run_script.sh /usr/local/bin/run_script.sh
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN chmod 0644 /etc/cron.d/mobex-crontab
-RUN chmod +x /usr/local/bin/run_script.sh
+RUN chmod 0644 /etc/cron.d/crontab-work
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
